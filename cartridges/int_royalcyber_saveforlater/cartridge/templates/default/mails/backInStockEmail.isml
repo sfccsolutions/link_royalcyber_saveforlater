@@ -1,0 +1,8 @@
+<body>
+    <p>
+        ${Resource.msg('msg.back.in.stock.email.1', 'jobs', null)} <a href="${pdict.productLink}">${pdict.productName}</a> ${Resource.msg('msg.back.in.stock.email.2', 'jobs', null)}
+    </p>
+    <p>
+        <a href="${pdict.cartLink}">${Resource.msg('cta.back.in.stock.email', 'jobs', null)}</a>
+    </p>
+</body>

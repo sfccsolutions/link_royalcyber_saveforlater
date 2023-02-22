@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jobs xmlns="http://www.demandware.com/xml/impex/jobs/2015-07-01">
+    <job job-id="rc_SaveForLater" priority="0">
+        <description>To notify customers about back in stock items that they added in their cart</description>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="rc_removeMarkedRecords" type="custom.rc_RemoveMarkedRecords" enforce-restart="false">
+                <description/>
+                <parameters/>
+                <rules>
+                    <on-exit status="ERROR">
+                        <stop-job/>
+                    </on-exit>
+                </rules>
+            </step>
+            <step step-id="rc_backInStockEmail" type="custom.rc_BackInStockEmail" enforce-restart="false">
+                <description/>
+                <parameters/>
+                <rules>
+                    <on-exit status="ERROR">
+                        <stop-job/>
+                    </on-exit>
+                </rules>
+            </step>
+        </flow>
+        <rules/>
+        <triggers>
+            <run-once enabled="false">
+                <date>2021-08-05Z</date>
+                <time>09:36:24.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+</jobs>

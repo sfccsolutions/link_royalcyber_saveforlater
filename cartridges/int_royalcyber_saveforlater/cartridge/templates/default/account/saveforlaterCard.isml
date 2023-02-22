@@ -1,0 +1,40 @@
+<div class="account-saveforlater-container card">
+    <div class="card-header clearfix">
+        <h2 class="pull-left">${Resource.msg('label.saveforlater', 'account', null)}</h2>
+        <isif condition="${pdict.savedForLaterModel.items.length > 0}">
+            <a href="${URLUtils.url('Cart-Itemsdetails')}" class="pull-right">${Resource.msg('link.viewall', 'account', null)}</a>
+        </isif>
+    </div>
+
+    <isif condition="${pdict.reportingURLs && pdict.reportingURLs.length}">
+        <isinclude template="reporting/reportingUrls" />
+    </isif>
+    <isif
+        condition="${pdict.savedForLaterModel != null && dw.system.Site.current.preferences.custom.rc_enableSaveForLater}">
+        <div class="card-body card-info-group">
+            <isif condition="${empty(pdict.savedForLaterModel.items)}">
+                <div class="container saveforlater-empty">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h1>${Resource.msg('info.savedforlater.empty.msg', 'cart', null)}</h1>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    <iselse/>
+        <div class="saveforlater saveforlater-page">
+            <iscomment> product cards </iscomment>
+            <isloop items="${pdict.savedForLaterModel.items}" var="item" status="item_r">
+                <isif condition="${item_r.index < 2}">
+                    <isif condition="${!!item.bundle}">
+                        <isinclude template="account/saveforlater/saveforlaterBundleCard" />
+                    <iselse/>
+                        <isinclude template="account/saveforlater/saveforlaterProductCard" />
+                    </isif>
+                </isif>
+            </isloop>
+            <isinclude template="cart/cartRemoveProductModal" />
+        </div>     
+    </isif>
+    </isif>
+</div>

@@ -1,0 +1,44 @@
+<div class="account-saveforlater-item card uuid-${item.UUID} pid-${item.pid}">
+    <isinclude template="cart/saveforlater/saveforlaterProductCardHeader" />
+    <!--- image, attributes, availability --->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-lg-12 d-flex flex-row">
+                    <div class="item-image">
+                        <img class="product-image" src="${item.imageObj.small[0].url}"
+                            alt="${item.imageObj.small[0].alt}" title="${item.imageObj.small[0].title}" />
+                    </div>
+                    <div class="item-attributes d-flex flex-column">
+                        <isloop items="${item.variationAttributes}" var="attribute">
+                            <isloop items="${attribute.values}" var="eachValue">
+                                <isif condition="${!!eachValue.selected}">
+                                    <p class="line-item-attributes">${attribute.displayName}:
+                                        ${eachValue.displayValue}
+                                    </p>
+                                </isif>
+                            </isloop>
+                        </isloop>
+                        <isif condition="${item.options}">
+                            <isloop items="${item.options}" var="option">
+                                <isif condition="${!!option}">
+                                    <p class="line-item-attributes">${option.displayName}:${option.displayValue}</p>
+                                </isif>
+                            </isloop>
+                        </isif>
+                        <div class="pro-opts">
+                            <isinclude template="cart/saveforlater/saveforlaterProductCardAvailability" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-block d-sm-none">
+                    <hr class="saveforlater-edit-item-divider line" />
+                </div>
+            </div>
+        </div>
+        <!---unit price and quantity --->
+        <isinclude template="account/saveforlater/productListItemProductPrice" />
+    </div>
+</div>

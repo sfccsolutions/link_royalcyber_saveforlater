@@ -1,0 +1,22 @@
+<div class="quantity-form">
+    <label class="line-item-pricing-info quantity-label" for="quantity-${item.UUID}">${Resource.msg('field.selectquantity','cart',null)}</label>
+    <select hidden class="form-control quantity custom-select"
+            data-uuid="${item.UUID}"
+            data-pid="${item.pid}"
+            data-action="${pdict.actionUrls.updateQuantityUrl}"
+            data-pre-select-qty="${item.qty}"
+            id="quantity-${item.UUID}"
+            name="quantity-${item.UUID}"
+            aria-label="quantity: ${StringUtils.formatInteger(item.qty)}">
+        <isloop begin="${item.minOrderQuantity}"
+                end="${item.maxOrderQuantity}"
+                status="status">
+            <isif condition="${item.qty === status.index}">
+                <option hidden selected>${status.index}</option>
+            <iselse/>
+                <option hidden>${status.index}</option>
+            </isif>
+        </isloop>
+    </select>
+</div>
+<label class="value">${item.qty}</label>

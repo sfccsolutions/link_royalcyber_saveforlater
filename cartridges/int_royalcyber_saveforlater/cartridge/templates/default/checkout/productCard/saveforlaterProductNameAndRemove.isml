@@ -1,0 +1,13 @@
+<div class="line-item-name">
+    <span>${item.name}</span>
+</div>
+<isif condition="${!item.isBonusProductLineItem}"/>
+    <div class="remove-line-item">
+        <button type="button" class="remove-btn remove-from-saveforlater btn btn-light"
+            data-url="${URLUtils.url('Cart-RemoveSavedProduct', 'pid', item.pid)}"
+            data-uuid="${item.UUID}"
+            aria-label="remove">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</isif>

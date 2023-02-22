@@ -1,0 +1,66 @@
+{
+    "step-types":
+    {
+      "script-module-step":
+      [
+        {
+          "@type-id":"custom.rc_RemoveMarkedRecords",
+          "@supports-parallel-execution":"false",
+          "@supports-site-context":"true",
+          "@supports-organization-context":"false",
+          "description":"Removes records for back in stock notification for products that have been bought.",
+          "module":"int_royalcyber_saveforlater/cartridge/scripts/steps/removeMarkedRecords.js",
+          "function":"removeMarkedRecords",
+          "transactional":"true",
+          "timeout-in-seconds":"900",
+          "status-codes": 
+          {
+            "status": 
+            [
+                {
+                  "@code": "ERROR",
+                  "description": "Used when the step failed with an error."
+                },
+                {
+                  "@code": "FINISHED",
+                  "description": "Used when the step finished successfully."
+                },
+                {
+                  "@code": "FINISHED_WITH_WARNINGS",
+                  "description": "Used when the step finished with warnings."
+                }
+            ]
+          }
+        },
+        {
+          "@type-id":"custom.rc_BackInStockEmail",
+          "@supports-parallel-execution":"false",
+          "@supports-site-context":"true",
+          "@supports-organization-context":"false",
+          "description":"Notifies about the cart items back in stock that were saved previously.",
+          "module":"int_royalcyber_saveforlater/cartridge/scripts/steps/backInStockEmail.js",
+          "function":"backInStockEmail",
+          "transactional":"true",
+          "timeout-in-seconds":"900",
+          "status-codes": 
+          {
+            "status": 
+            [
+                {
+                  "@code": "ERROR",
+                  "description": "Used when the step failed with an error."
+                },
+                {
+                  "@code": "FINISHED",
+                  "description": "Used when the step finished successfully."
+                },
+                {
+                  "@code": "FINISHED_WITH_WARNINGS",
+                  "description": "Used when the step finished with warnings."
+                }
+            ]
+          }
+        }
+      ]
+    }
+  }

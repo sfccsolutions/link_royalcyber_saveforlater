@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <custom-type type-id="rc_backInStockNotification">
+        <display-name xml:lang="x-default">Back In Stock Notification</display-name>
+        <description xml:lang="x-default">Stores information about out of stock cart items and related customers in order to send them back in stock notification</description>
+        <staging-mode>no-staging</staging-mode>
+        <storage-scope>site</storage-scope>
+        <key-definition attribute-id="rc_ID">
+            <type>string</type>
+            <min-length>0</min-length>
+        </key-definition>
+        <attribute-definitions>
+            <attribute-definition attribute-id="rc_customerNo">
+                <display-name xml:lang="x-default">Customer Number</display-name>
+                <type>string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="rc_markAsDelete">
+                <display-name xml:lang="x-default">Mark As Delete Flag</display-name>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="rc_notificationCount">
+                <display-name xml:lang="x-default">Notification count</display-name>
+                <type>int</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-value>0.0</min-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="rc_productID">
+                <display-name xml:lang="x-default">Product ID</display-name>
+                <type>string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+        </attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="rc_backInStock">
+                <display-name xml:lang="x-default">Back In Stock</display-name>
+                <attribute attribute-id="rc_notificationCount"/>
+                <attribute attribute-id="rc_ID"/>
+                <attribute attribute-id="rc_markAsDelete"/>
+                <attribute attribute-id="rc_productID"/>
+                <attribute attribute-id="rc_customerNo"/>
+            </attribute-group>
+        </group-definitions>
+    </custom-type>
+
+</metadata>

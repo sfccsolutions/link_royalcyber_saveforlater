@@ -1,0 +1,45 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/cart.css');
+        assets.addJs('/js/cart.js');
+    </isscript>
+
+    <isif condition="${pdict.reportingURLs && pdict.reportingURLs.length}">
+        <isinclude template="reporting/reportingUrls" />
+    </isif>
+    <div class="saveforlater-section">
+        <isif condition="${pdict.savedForLaterModel != null && dw.system.Site.current.preferences.custom.rc_enableSaveForLater}">
+            <div class="container">
+                <h1 class="page-title">${Resource.msg('title.saved','cart',null)}</h1>
+            </div>
+            <isif condition="${empty(pdict.savedForLaterModel.items)}">
+                <div class="container saveforlater-empty">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h1>${Resource.msg('info.savedforlater.empty.msg','cart',null)}</h1>
+                        </div>
+                    </div>
+                </div>
+            <iselse/>
+                <div class="container saveforlater saveforlater-page">
+                    <div class="row">
+                        <iscomment> product cards </iscomment>
+                        <div class="col-sm-7 col-md-8">
+                            <isloop items="${pdict.savedForLaterModel.items}" var="item">
+                                <isif condition="${!!item.bundle}">
+                                    <isinclude template="cart/saveforlater/saveforlaterBundleCard" />
+                                <iselse/>
+                                    <isinclude template="cart/saveforlater/saveforlaterProductCard" />
+                                </isif>
+                            </isloop>
+                        </div>
+                    </div>
+                    <isinclude template="cart/cartRemoveProductModal"/>
+                </div>
+
+                <isinclude template="cart/cartRemoveCouponModal"/>
+            </isif>        
+        </isif>
+    </div>
+</isdecorate>

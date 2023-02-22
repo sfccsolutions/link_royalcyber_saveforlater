@@ -1,0 +1,13 @@
+<div class="quantity-form-wishlist">
+    <label class="line-item-pricing-info quantity-label" for="quantity">${Resource.msg('field.selectquantity','cart',null)}</label>
+    <select hidden class="form-control quantity custom-select"
+            data-uuid="${item.UUID}"
+            data-pid="${item.pid}"
+            data-pre-select-qty="${item.qty}"
+            id="quantity"
+            name="quantity">
+            <option  hidden>${item.qty}</option>
+    </select>
+    
+</div>
+<label class="value">${item.qty}</label>

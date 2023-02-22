@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <type-extension type-id="SitePreferences">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="rc_cartToSaveForLater">
+                <display-name xml:lang="x-default">Cart to Save For Later</display-name>
+                <type>boolean</type>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="rc_enableSaveForLater">
+                <display-name xml:lang="x-default">Enable Save For Later Cartridge</display-name>
+                <type>boolean</type>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="rc_saveForLaterToCart">
+                <display-name xml:lang="x-default">Save for Later to Cart</display-name>
+                <type>boolean</type>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="RoyalCyber_SaveForLater">
+                <display-name xml:lang="x-default">RoyalCyber_SaveForLater</display-name>
+                <attribute attribute-id="rc_cartToSaveForLater"/>
+                <attribute attribute-id="rc_saveForLaterToCart"/>
+                <attribute attribute-id="rc_enableSaveForLater"/>
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
+    <type-extension type-id="ProductListItem">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="rc_outOfStock">
+                <display-name xml:lang="x-default">Out of stock</display-name>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+        </custom-attribute-definitions>
+    </type-extension>
+
+</metadata>

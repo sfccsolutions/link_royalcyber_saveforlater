@@ -1,0 +1,36 @@
+<div class="line-item-header">
+    <!--- product name--->
+    <div class="line-item-name">
+        ${item.name}
+    </div>
+     <!---Add to Wishlist from save to later --->
+            <isif condition="${dw.system.Site.current.getCustomPreferenceValue('sfraEnableOverlayWishlist') === true}">
+                <div class="product" data-pid="${item.pid}">
+                    <a class="wishlistTile" href="${URLUtils.url('Wishlist-AddProduct')}"
+                        title="${Resource.msg('wishlist.addto.wishlist.heart', 'wishlist', null)}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-inverse fa-stack-2x"></i>
+                            <i class="fa fa-heart-o fa-stack-1x"></i>
+                        </span>
+                    </a>
+                </div>
+            </isif>
+    <!--- remove saved icon--->
+    <div class="d-lg-none"> <!---hide lg and xl--->
+            <button type="button" class="remove-btn remove-from-saveforlater btn btn-light"
+            data-url="${URLUtils.url('Cart-RemoveSavedProduct', 'pid', item.pid)}"
+            data-uuid="${item.UUID}"
+            aria-label="remove">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="hidden-md-down"> <!---hide medium, sm, xs--->
+        <button type="button" class="remove-btn-lg remove-from-saveforlater btn btn-light"
+            data-url="${URLUtils.url('Cart-RemoveSavedProduct', 'pid', item.pid)}"
+            data-uuid="${item.UUID}"
+            aria-label="remove">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+   
+</div>

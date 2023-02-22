@@ -1,0 +1,4 @@
+<div class="quantity-form-wishlist">
+    <p class="line-item-pricing-info quantity-label" for="quantity">${Resource.msg('field.selectquantity','cart',null)}</p>   
+    <span class="value">${item.qty}</span>
+</div>

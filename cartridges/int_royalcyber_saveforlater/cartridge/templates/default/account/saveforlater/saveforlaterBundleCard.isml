@@ -1,0 +1,25 @@
+<div class="card product-info uuid-${item.UUID} pid-${item.pid}">
+    <!--- name and remove buttons --->
+    <isinclude template="cart/saveforlater/saveforlaterProductCardHeader" />
+    <div class="bundle-includes">${Resource.msg('msg.bundle.includes', 'cart', null)}</div>
+    <!--- individual bundled line items --->
+    <isinclude template="cart/saveforlater/saveforlaterProductCardBundledItems" />
+    <div class="row bundle-card-footer">
+        <div class="col-lg-5 d-flex flex-column align-items-lg-center justify-content-lg-center bundle-misc">
+            <div class="line-item-availability availability-${item.UUID}">
+                <isloop items="${item.availability.messages}" var="message">
+                    ${message}
+                </isloop>
+                <isif condition="${item.availability.inStockDate}">
+                    <div class="line-item-instock-date">
+                        ${item.availability.inStockDate}
+                    </div>
+                </isif>
+                <div class="pro-opts">
+                    <isinclude template="cart/saveforlater/saveforlaterProductCardAvailability" />
+                </div>
+            </div>
+        </div>
+        <isinclude template="cart/saveforlater/productListItemProductPrice" />
+    </div>
+</div>

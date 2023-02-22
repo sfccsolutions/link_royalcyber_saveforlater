@@ -1,0 +1,75 @@
+<div class="product-line-item uuid-${item.UUID}">
+    <div class="line-item-header">
+        <isif condition=${miniCart}>
+            <isinclude template="checkout/productCard/saveforlaterProductNameAndRemove" />
+        <iselse>
+            <isinclude template="checkout/productCard/saveforlaterProductName" />
+        </isif>
+    </div>
+
+    <isif condition="${item.bundle}">
+        <div class="bundle-includes">${Resource.msg('msg.bundle.includes','cart',null)}</div>
+        <!--- individual bundled line items --->
+        <isinclude template="checkout/productCard/saveforlaterBundledItems" />
+    <iselse/>
+        <div class="product-line-item-details d-flex flex-row">
+            <div class="item-image">
+                <img class="product-image"
+                    src="${item.imageObj.small[0].url}"
+                    alt="${item.imageObj.small[0].alt}"
+                    title="${item.imageObj.small[0].title}">
+            </div>
+            <div class="item-attributes">
+                <isloop items="${item.variationAttributes}" var="attribute">
+                    <isloop items="${attribute.values}" var="eachValue">
+                        <isif condition="${!!eachValue.selected}">
+                            <p class="line-item-attributes">${attribute.displayName}: ${eachValue.displayValue}</p>
+                        </isif>
+                    </isloop>
+                </isloop>
+
+                <div class="item-options">
+                    <isif condition="${item.options}" >
+                        <isloop items="${item.options}" var="option">
+                            <isif condition="${!!option}" >
+                                <p class="line-item-attributes">${option.displayName}:${option.displayValue}</p>
+                            </isif>
+                        </isloop>
+                    </isif>
+                </div>
+
+                <isif condition="${(pdict.order && !pdict.order.orderStatus) || miniCart}">
+                    <isinclude template="checkout/productCard/saveforlaterAvailability" />
+                </isif>
+            </div>
+        </div>
+    </isif>
+    <div><hr class="line-item-divider"></div>
+    <isif condition="${item.productType === 'bundle' && ((pdict.order && !pdict.order.orderStatus) || miniCart)}">
+        <isinclude template="checkout/productCard/saveforlaterAvailability" />
+    </isif>
+    <div class="row align-items-start">
+        <!--- item price --->
+        <div class="col-4 line-item-unit-price">
+            <isif condition="${item.priceObj}">
+            <p class="line-item-pricing-info">
+                <span class="line-item-total-text unit-price-label">
+                    ${Resource.msg('label.each.item.price','cart',null)}
+                </span><br/>
+                <isset name="price" value="${item.priceObj}" scope="page"/>
+                <div class="unit-price">
+                    <isinclude template="/product/components/pricing/main" />
+                </div>
+            </p>
+            </isif>
+        </div>
+        <!--- quantity --->
+        <div class="col-4 line-item-quantity">
+            <isif condition=${miniCart}>
+                <isinclude template="checkout/productCard/saveforlaterQuantitySelector" />
+            <iselse>
+                <isinclude template="checkout/productCard/saveforlaterQuantityDisplay" />
+            </isif>
+        </div>
+    </div>
+</div>
